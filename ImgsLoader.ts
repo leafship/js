@@ -1,5 +1,3 @@
-import Layout from "https://cdn.skypack.dev/minigame-canvas-engine";
-
 
 /**
  * 图片加载结果
@@ -28,28 +26,31 @@ interface ImageLoadDetail {
   success: boolean;
 }
 
+interface LayoutLike {
+  loadImgs(urls: string[]): Promise<unknown>;
+}
+
 
 /**
  * 批量预加载图片，可追踪每张图片的加载状态
+ * @param layout - 提供 loadImgs 方法的 Layout 对象
  * @param imageUrls - 图片URL数组
  * @returns Promise<ImageLoadResult> 返回包含成功和失败列表的结果对象
  * 
  * @example
  * ```typescript
+ * import Layout from 'minigame-canvas-engine';
  * const images = ['img1.png', 'img2.png', 'img3.png'];
- * const result = await preloadImages(images);
+ * const result = await preloadImages(Layout, images);
  * 
  * if (result.isAllSuccess) {
  *   console.log('所有图片加载成功');
- *   Layout.layout(ctx);
  * } else {
  *   console.warn('部分图片加载失败:', result.failed);
- *   // 仍然可以渲染
- *   Layout.layout(ctx);
  * }
  * ```
  */
-async function preloadImages(imageUrls: string[]): Promise<ImageLoadResult> {
+async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<ImageLoadResult> {
   if (!imageUrls || imageUrls.length === 0) {
     return {
       success: [],
@@ -62,15 +63,15 @@ async function preloadImages(imageUrls: string[]): Promise<ImageLoadResult> {
   }
 
   const promises = imageUrls.map(url => 
-    Layout.loadImgs([url])
+    layout.loadImgs([url])
       .then((): ImageLoadDetail => ({ url, success: true }))
       .catch((): ImageLoadDetail => ({ url, success: false }))
   );
 
   const results = await Promise.all(promises);
   
-  const successList = results.filter(r => r.success).map(r => r.url);
-  const failedList = results.filter(r => !r.success).map(r => r.url);
+  const successList = results.filter((r: ImageLoadDetail) => r.success).map((r: ImageLoadDetail) => r.url);
+  const failedList = results.filter((r: ImageLoadDetail) => !r.success).map((r: ImageLoadDetail) => r.url);
 
   return {
     success: successList,
@@ -84,4 +85,4 @@ async function preloadImages(imageUrls: string[]): Promise<ImageLoadResult> {
 
 // 导出类型和函数
 export { preloadImages };
-export type { ImageLoadResult, ImageLoadDetail };
+export type { ImageLoadResult, ImageLoadDetail, LayoutLike };
