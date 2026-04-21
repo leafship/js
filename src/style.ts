@@ -1,15 +1,15 @@
 // 样式
 const style = {
   container: {
-    width: 400,
-    height: 200,
+    width: 720,
+    height: 1030,
     backgroundColor: '#4ECDC4',
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
     color: '#ffffff',
-    fontSize: 24,
+    fontSize: 32,
   },
 };
 
