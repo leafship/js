@@ -17,7 +17,7 @@ const template = `
      {{? it.top2RankItem }}
      <view class="top2AvatarBorder" >
         <view class="top2AvatarBg">
-            <image id="top2Avatar" class="top2Avatar clickItem" src="{{= it.top2RankItem.avatarUrl }}"></image>
+            <image id="top2Avatar" class="top2Avatar clickItem" data-index="-2" src="{{= it.top2RankItem.avatarUrl }}"></image>
         </view>
         
     </view>
@@ -39,7 +39,7 @@ const template = `
         </image>
         <view class="top1AvatarBorder" >
           <view class="top1AvatarBg">
-            <image id="top1Avatar" class="top1Avatar clickItem" src="{{= it.top1RankItem.avatarUrl }}"></image>
+            <image id="top1Avatar" class="top1Avatar clickItem" data-index="-1" src="{{= it.top1RankItem.avatarUrl }}"></image>
           </view>
         </view>
         <text id="top1Name" class="top1Name" value="{{= it.top1RankItem.nickname }}"></text>
@@ -57,7 +57,7 @@ const template = `
       {{? it.top3RankItem }}
       <view class="top3AvatarBorder" >
         <view class="top3AvatarBg">
-            <image id="top3Avatar" class="top3Avatar clickItem" src="{{= it.top3RankItem.avatarUrl }}"></image>
+            <image id="top3Avatar" class="top3Avatar clickItem" data-index="-3" src="{{= it.top3RankItem.avatarUrl }}"></image>
         </view>
       </view>
         <text id="top3Name" class="top3Name" value="{{= it.top3RankItem.nickname }}"></text>
@@ -88,10 +88,10 @@ const template = `
   
   {{~ it.listRankItem : item : index}}
   {{? index % 2 === 0 }}
-    <view  class="item item0BgColor clickItem" data-avatarUrl="{{=item.avatarUrl}}">
+    <view  class="item item0BgColor clickItem" data-index="{{=index}}" data-avatarUrl="{{=item.avatarUrl}}">
   {{?}}
   {{? index % 2 === 1 }}
-    <view  class="item item1BgColor clickItem" data-avatarUrl="{{=item.avatarUrl}}">
+    <view  class="item item1BgColor clickItem" data-index="{{=index}}" data-avatarUrl="{{=item.avatarUrl}}">
   {{?}}
     
         <text class="rank" value="{{=item.rank}}"></text>
