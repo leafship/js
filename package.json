@@ -1,24 +1,14 @@
 {
-  "name": "js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "layout-demo",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leafship/js.git"
+  "dependencies": {
+    "minigame-canvas-engine": "^1.0.29"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/leafship/js/issues"
-  },
-  "homepage": "https://github.com/leafship/js#readme",
   "devDependencies": {
-    "typescript": "^6.0.3"
+    "vite": "^5.0.0"
   }
 }
