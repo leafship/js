@@ -50,6 +50,26 @@ interface LayoutLike {
  * }
  * ```
  */
+const LOAD_TIMEOUT = 2000;
+
+function loadWithTimeout(loadPromise: Promise<unknown>, timeout: number): Promise<unknown> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error('Load timeout'));
+    }, timeout);
+    
+    loadPromise
+      .then(result => {
+        clearTimeout(timer);
+        resolve(result);
+      })
+      .catch(err => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
 async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<ImageLoadResult> {
   if (!imageUrls || imageUrls.length === 0) {
     return {
@@ -63,7 +83,7 @@ async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<I
   }
 
   const promises = imageUrls.map(url => 
-    layout.loadImgs([url])
+    loadWithTimeout(layout.loadImgs([url]), LOAD_TIMEOUT)
       .then((): ImageLoadDetail => ({ url, success: true }))
       .catch((): ImageLoadDetail => ({ url, success: false }))
   );
