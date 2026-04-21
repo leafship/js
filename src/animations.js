@@ -70,7 +70,6 @@ class AnimationManager {
 
   start() {
     if (this.isRunning) return;
-    this.isRunning = true;
 
     this.tickerCallback = () => {
       TWEEN.update();
