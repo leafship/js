@@ -44,34 +44,77 @@ class GoldBounce {
   }
 }
 
-function createBlinkAnimation(elementId) {
-  const el = Layout.getElementById(elementId);
-  if (el) {
-    el.style.opacity = 0.3;
-    new TWEEN.Tween(el.style)
-      .to({ opacity: 1.0 }, 1000)
-      .repeat(300)
-      .yoyo(true)
-      .start();
+const goldBounce = new GoldBounce();
+
+class AnimationManager {
+  constructor() {
+    this.tickerCallback = null;
+    this.blinkTweens = [];
+    this.isRunning = false;
+  }
+
+  start() {
+    if (this.isRunning) return;
+    this.isRunning = true;
+
+    this.tickerCallback = () => {
+      TWEEN.update();
+    };
+    Layout.ticker.add(this.tickerCallback);
+
+    const blinkElements = [
+      'top1NobodyAvatar',
+      'top1NobodyName',
+      'top2NobodyAvatar',
+      'top2NobodyName',
+      'top3NobodyAvatar',
+      'top3NobodyName'
+    ];
+
+    blinkElements.forEach(id => {
+      const el = Layout.getElementById(id);
+      if (el) {
+        el.style.opacity = 0.3;
+        const tween = new TWEEN.Tween(el.style)
+          .to({ opacity: 1.0 }, 1000)
+          .repeat(300)
+          .yoyo(true)
+          .start();
+        this.blinkTweens.push(tween);
+      }
+    });
+
+    goldBounce.start();
+
+  }
+
+  stop() {
+    if (!this.isRunning) return;
+
+    if (this.tickerCallback) {
+      Layout.ticker.remove(this.tickerCallback);
+      this.tickerCallback = null;
+    }
+
+    this.blinkTweens.forEach(tween => {
+      if (tween) {
+        tween.stop();
+      }
+    });
+    this.blinkTweens = [];
+
+    goldBounce.stop();
+
+    this.isRunning = false;
   }
 }
 
-export function initAnimations() {
-  Layout.ticker.add(() => {
-    TWEEN.update();
-  });
+const animationManager = new AnimationManager();
 
-  const blinkElements = [
-    'top1NobodyAvatar',
-    'top1NobodyName',
-    'top2NobodyAvatar',
-    'top2NobodyName',
-    'top3NobodyAvatar',
-    'top3NobodyName'
-  ];
+export function startAnimations() {
+  animationManager.start();
+}
 
-  blinkElements.forEach(id => createBlinkAnimation(id));
-
-  const goldBounce = new GoldBounce();
-  goldBounce.start();
+export function stopAnimations() {
+  animationManager.stop();
 }

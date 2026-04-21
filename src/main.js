@@ -2,7 +2,7 @@ import Layout from 'minigame-canvas-engine';
 import { template } from './template';
 import { style } from './style';
 import { data } from './data';
-import { initAnimations } from './animations';
+import { startAnimations } from './animations';
 
 Layout.updateViewPort({ x: 0, y: 0, width: 720, height: 1030 });
 
@@ -25,4 +25,4 @@ Layout.clear();
 Layout.init(resultText, style);
 Layout.layout(context);
 
-initAnimations();
+startAnimations();
