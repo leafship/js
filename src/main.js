@@ -1,4 +1,5 @@
 import Layout from 'minigame-canvas-engine';
+import * as TWEEN from 'https://cdn.skypack.dev/@tweenjs/tween.js@18.6.4';
 import { template } from './template';
 import { style } from './style';
 import { data } from './data';
