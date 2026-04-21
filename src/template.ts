@@ -16,8 +16,10 @@ const template = `
      {{?}}
      {{? it.top2RankItem }}
      <view class="top2AvatarBorder" >
-        <image id="top2Avatar" class="top2Avatar clickItem" src="{{= it.top2RankItem.avatarUrl }}">
-        </image>
+        <view class="top2AvatarBg">
+            <image id="top2Avatar" class="top2Avatar clickItem" src="{{= it.top2RankItem.avatarUrl }}"></image>
+        </view>
+        
     </view>
     <text id="top2Name" class="top2Name" value="{{= it.top2RankItem.nickname }}"></text>
      {{?}}
@@ -36,8 +38,9 @@ const template = `
         <image id="top1Gold" class="top1Gold" src="https://i.ibb.co/xbFG5kY/gold-medal-icon.png">
         </image>
         <view class="top1AvatarBorder" >
-          <image id="top1Avatar" class="top1Avatar clickItem" src="{{= it.top1RankItem.avatarUrl }}">
-          </image>
+          <view class="top1AvatarBg">
+            <image id="top1Avatar" class="top1Avatar clickItem" src="{{= it.top1RankItem.avatarUrl }}"></image>
+          </view>
         </view>
         <text id="top1Name" class="top1Name" value="{{= it.top1RankItem.nickname }}"></text>
       {{?}}
@@ -53,8 +56,9 @@ const template = `
       {{?}}
       {{? it.top3RankItem }}
       <view class="top3AvatarBorder" >
-        <image id="top3Avatar" class="top3Avatar clickItem" src="{{= it.top3RankItem.avatarUrl }}">
-        </image>
+        <view class="top3AvatarBg">
+            <image id="top3Avatar" class="top3Avatar clickItem" src="{{= it.top3RankItem.avatarUrl }}"></image>
+        </view>
       </view>
         <text id="top3Name" class="top3Name" value="{{= it.top3RankItem.nickname }}"></text>
       
@@ -133,12 +137,11 @@ const template = `
         <view class="myRankAvatar">
           <image class="myRankAvatarIconBorder" src="https://i.ibb.co/v6y7rmvf/round-bg-icon.png">
           
+          <view class="myRankAvatarBg">
            {{? it.myRankItem.avatarUrl}}
               <image class="myRankAvatarIcon" src="{{= it.myRankItem.avatarUrl }}"></image>
            {{?}}
-           {{? !it.myRankItem.avatarUrl}}
-              <image class="myRankAvatarIcon" src=""></image>
-           {{?}}
+           </view>
            
           </image>
         </view>

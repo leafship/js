@@ -57,6 +57,15 @@ const style = {
     height: 90,
     borderRadius: 45
   },
+  top2AvatarBg: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: '#000341',
+  },
   top2AvatarBorder: {
     width: 96,
     height: 96,
@@ -120,6 +129,15 @@ const style = {
     height: 120,
     borderRadius: 60,
   },
+  top1AvatarBg: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: '#000341',
+  },
   top1AvatarBorder: {
     width: 126,
     height: 126,
@@ -173,6 +191,15 @@ const style = {
     width: 90,
     height: 90,
     borderRadius: 45
+  },
+  top3AvatarBg: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: '#000341',
   },
   top3AvatarBorder: {
     width: 96,
@@ -376,6 +403,15 @@ const style = {
     width: 60,
     height: 60,
     borderRadius: 30
+  },
+  myRankAvatarBg: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#000E96',
   },
   
   myRankME: {
