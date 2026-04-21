@@ -1,4 +1,4 @@
-const modalStyle = {
+export const modalStyle = {
   modal: {
     width: 720,
     height: 1030,

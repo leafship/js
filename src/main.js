@@ -4,6 +4,8 @@ import { style } from './style';
 import { getNextData } from './data';
 import { AnimationManager } from './animations';
 import { processDataWithImageCheck } from './dataProcessor';
+import modalTemplate from './modalTemplate';
+import modalStyle from './modalStyle';
 
 async function render() {
   const data = getNextData();
@@ -19,7 +21,31 @@ async function render() {
   Layout.init(resultText, style);
   Layout.layout(context);
 
+  bindClickEvent();
+
   AnimationManager.getInstance().start();
+}
+
+function bindClickEvent() {  
+  const list = Layout.getElementsByClassName('clickItem'); 
+  const container = Layout.getElementById('container'); 
+ 
+  list.forEach(item => { 
+    item.on('click', (e) => { 
+      Layout.insertElement(modalTemplate, modalStyle, container); 
+       
+      const modal = Layout.getElementById('modal'); 
+      const modalButtonSection = Layout.getElementById('modalButtonSection'); 
+       
+      if (modalButtonSection) { 
+        modalButtonSection.on('click', (e) => { 
+          if (modal) { 
+            modal.remove();  
+          } 
+        }); 
+      } 
+    }); 
+  }); 
 }
 
 Layout.updateViewPort({ x: 0, y: 0, width: 720, height: 1030 });

@@ -1,4 +1,4 @@
-let modalTemplate = `
+export let modalTemplate = `
   <view id="modal" class="modal">
     <view class="modalContent">
     
