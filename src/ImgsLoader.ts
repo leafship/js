@@ -1,26 +1,16 @@
-
 /**
  * 图片加载结果
  */
 interface ImageLoadResult {
-  /** 加载成功的图片URL列表 */
   success: string[];
-  /** 加载失败的图片URL列表 */
   failed: string[];
-  /** 成功加载的数量 */
   successCount: number;
-  /** 失败的数量 */
   failedCount: number;
-  /** 总数 */
   total: number;
-  /** 是否全部加载成功 */
   isAllSuccess: boolean;
 }
 
 
-/**
- * 单个图片的加载状态
- */
 interface ImageLoadDetail {
   url: string;
   success: boolean;
@@ -30,42 +20,37 @@ interface LayoutLike {
   loadImgs(urls: string[]): Promise<unknown>;
 }
 
-
-/**
- * 批量预加载图片，可追踪每张图片的加载状态
- * @param layout - 提供 loadImgs 方法的 Layout 对象
- * @param imageUrls - 图片URL数组
- * @returns Promise<ImageLoadResult> 返回包含成功和失败列表的结果对象
- * 
- * @example
- * ```typescript
- * import Layout from 'minigame-canvas-engine';
- * const images = ['img1.png', 'img2.png', 'img3.png'];
- * const result = await preloadImages(Layout, images);
- * 
- * if (result.isAllSuccess) {
- *   console.log('所有图片加载成功');
- * } else {
- *   console.warn('部分图片加载失败:', result.failed);
- * }
- * ```
- */
 const LOAD_TIMEOUT = 4000;
+const CACHE_MAX_SIZE = 100;
 
-function loadWithTimeout(loadPromise: Promise<unknown>, timeout: number): Promise<unknown> {
-  return new Promise((resolve, reject) => {
+const failedImageCache: string[] = [];
+
+function addToFailedCache(url: string) {
+  const index = failedImageCache.indexOf(url);
+  if (index !== -1) {
+    failedImageCache.splice(index, 1);
+  }
+  failedImageCache.push(url);
+  if (failedImageCache.length > CACHE_MAX_SIZE) {
+    failedImageCache.shift();
+  }
+}
+
+function loadWithTimeout(url: string, loadPromise: Promise<unknown>, timeout: number): Promise<ImageLoadDetail> {
+  return new Promise((resolve) => {
     const timer = setTimeout(() => {
-      reject(new Error('Load timeout'));
+      resolve({ url, success: false });  // 超时返回失败，但不加入缓存
     }, timeout);
     
     loadPromise
-      .then(result => {
+      .then(() => {
         clearTimeout(timer);
-        resolve(result);
+        resolve({ url, success: true });
       })
-      .catch(err => {
+      .catch(() => {
         clearTimeout(timer);
-        reject(err);
+        addToFailedCache(url);  // 只有真正加载失败才加入缓存
+        resolve({ url, success: false });
       });
   });
 }
@@ -82,16 +67,37 @@ async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<I
     };
   }
 
-  const promises = imageUrls.map(url => 
-    loadWithTimeout(layout.loadImgs([url]), LOAD_TIMEOUT)
-      .then((): ImageLoadDetail => ({ url, success: true }))
-      .catch((): ImageLoadDetail => ({ url, success: false }))
-  );
-
-  const results = await Promise.all(promises);
+  const urlsToLoad: string[] = [];
+  const alreadyFailed: string[] = [];
   
-  const successList = results.filter((r: ImageLoadDetail) => r.success).map((r: ImageLoadDetail) => r.url);
-  const failedList = results.filter((r: ImageLoadDetail) => !r.success).map((r: ImageLoadDetail) => r.url);
+  imageUrls.forEach(url => {
+    if (failedImageCache.includes(url)) {
+      alreadyFailed.push(url);
+    } else {
+      urlsToLoad.push(url);
+    }
+  });
+
+  let results: ImageLoadDetail[] = [];
+  
+  if (urlsToLoad.length > 0) {
+    const promises = urlsToLoad.map(url => 
+      loadWithTimeout(url, layout.loadImgs([url]), LOAD_TIMEOUT)
+    );
+
+    results = await Promise.all(promises);
+  }
+
+  const successList = [...urlsToLoad.filter(url => !alreadyFailed.includes(url))];
+  const failedList = [...alreadyFailed];
+
+  results.forEach(r => {
+    if (!r.success) {
+      failedList.push(r.url);
+    } else {
+      successList.push(r.url);
+    }
+  });
 
   return {
     success: successList,
@@ -103,6 +109,5 @@ async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<I
   };
 }
 
-// 导出类型和函数
 export { preloadImages };
 export type { ImageLoadResult, ImageLoadDetail, LayoutLike };
