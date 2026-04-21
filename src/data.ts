@@ -91,7 +91,22 @@ const data = {
       elim4: 5,
       elim3: 8,
       elim2: 10
+    },
+    {
+      openId: 'user_007',  
+      rank: 7,
+      nickname: '不败神话',
+      avatarUrl: 'https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9474353441508872424%22%7D&n_type=-1&p_from=-1',  // 无效头像
+      stage: 3,
+      tbcnt: 65,
+      totalCombo: 130,
+      maxCombo: 42,
+      elim5: 5,
+      elim4: 5,
+      elim3: 8,
+      elim2: 10
     }
+    
   ]
 };
 
