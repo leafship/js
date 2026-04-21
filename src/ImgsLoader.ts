@@ -68,11 +68,11 @@ async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<I
   }
 
   const urlsToLoad: string[] = [];
-  const alreadyFailed: string[] = [];
+  const cachedFailed: string[] = [];
   
   imageUrls.forEach(url => {
     if (failedImageCache.includes(url)) {
-      alreadyFailed.push(url);
+      cachedFailed.push(url);
     } else {
       urlsToLoad.push(url);
     }
@@ -88,16 +88,8 @@ async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<I
     results = await Promise.all(promises);
   }
 
-  const successList = [...urlsToLoad.filter(url => !alreadyFailed.includes(url))];
-  const failedList = [...alreadyFailed];
-
-  results.forEach(r => {
-    if (!r.success) {
-      failedList.push(r.url);
-    } else {
-      successList.push(r.url);
-    }
-  });
+  const successList = results.filter(r => r.success).map(r => r.url);
+  const failedList = [...cachedFailed, ...results.filter(r => !r.success).map(r => r.url)];
 
   return {
     success: successList,
