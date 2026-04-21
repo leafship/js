@@ -1,6 +1,6 @@
 import { preloadImages } from './ImgsLoader';
 
-const DEFAULT_AVATAR = './pic/avatar_default_icon.png';
+const DEFAULT_AVATAR = '/avatar_default_icon.png';
 
 function collectAvatarUrls(dataObj) {
   const urls = [];
