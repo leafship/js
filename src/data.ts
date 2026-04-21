@@ -54,7 +54,7 @@ const data = {
       openId: 'user_004',
       rank: 4,
       nickname: '雷霆一击',
-      avatarUrl: 'https://lasf/',
+      avatarUrl: 'https://error/', //无效头像示例
       stage: 4,
       tbcnt: 87,
       totalCombo: 174,
@@ -79,7 +79,7 @@ const data = {
       elim2: 14
     },
     {
-      openId: 'user_006',  // 跳过了第5名（是我自己），所以这里展示第6名
+      openId: 'user_006',  
       rank: 6,
       nickname: '不败神话',
       avatarUrl: '',  // 无头像示例
@@ -94,3 +94,5 @@ const data = {
     }
   ]
 };
+
+export { data };
