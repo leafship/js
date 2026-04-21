@@ -29,7 +29,7 @@ export let modalTemplate = `
           <text class="modalStageLeftTitle" value="当前关卡"></text>
           <text class="modalStageLeftValue" value="第 9999999 关"></text>
         </view>
-        <image class="modalStageRightFlagImg" src="https://i.ibb.co/yBpc8Rbb/flag.png"></image>
+        <image class="modalStageRightFlagImg" src="pic/flag.png"></image>
       </view>
       
       <view class="recordSection">
@@ -42,7 +42,7 @@ export let modalTemplate = `
         <view class="modalRecord1">
             <view class="modalRecord1Block">
                 <view class="modalRecord1BlockTitle">
-                    <image class="modalRecord1BlockTitleImg" src="https://wx.qlogo.cn/mmopen/vi_32/yctGCWkz1jKPjEeR8ic5RXXxn0sExT4JrPjIpPvscuS1FBZssIEp2Ry5URlT4eY7mM0akiaRHgdntryUDOicxbVh7Fo2gLVQCNzVchuwSZY9LI/132"></image>
+                    <image class="modalRecord1BlockTitleImg" src="pic/rank_block_cnt_icon.png"></image>
                     <text class="modalRecord1BlockTitleText" value="方块数"></text>
                 </view>
                 <view class="modalRecord1BlockValue">
@@ -52,7 +52,7 @@ export let modalTemplate = `
             </view>
             <view class="modalRecord1Combo">
                 <view class="modalRecord1ComboTitle">
-                    <image class="modalRecord1ComboTitleImg" src="https://wx.qlogo.cn/mmopen/vi_32/yctGCWkz1jKPjEeR8ic5RXXxn0sExT4JrPjIpPvscuS1FBZssIEp2Ry5URlT4eY7mM0akiaRHgdntryUDOicxbVh7Fo2gLVQCNzVchuwSZY9LI/132"></image>
+                    <image class="modalRecord1ComboTitleImg" src="pic/rank_combo_icon.png"></image>
                     <text class="modalRecord1ComboTitleText" value="连消"></text>
                 </view>
                 <view class="modalRecord1ComboTotalMax">
@@ -70,7 +70,7 @@ export let modalTemplate = `
         
         <view class="modalRecordME">
             <view class="modalRecordMETitle">
-              <image class="modalRecordMETitleImg" src="https://i.ibb.co/gFDLP525/Podium3.png"></image>
+              <image class="modalRecordMETitleImg" src="pic/rank_me_icon.png"></image>
               <text class="modalRecordMETitleText" value="多消数"></text>
             </view>
             <view class="modalRecordMETop">
@@ -98,7 +98,7 @@ export let modalTemplate = `
       </view>
       
       <view id="modalButtonSection" class="buttonSection">
-        <image class="modalBtnSectionImg" src="https://i.ibb.co/FkY7jzkK/btn-icon.png">
+        <image class="modalBtnSectionImg" src="pic/btn_icon.png">
           <text class="modalBtnSectionText" value="关闭"></text>
         </image>
       </view>
