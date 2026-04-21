@@ -124,7 +124,7 @@ const template = `
   
   </scrollview>
    
-      <view class="myRank clickItem">
+      <view class="myRank clickItem" data-index="-4">
         <view class="myRankNumber">
           <text class="myRankNumberText" value="我的排名"></text>
           {{? it.myRankItem.rank }}
