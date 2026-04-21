@@ -4,8 +4,8 @@ import { style } from './style';
 import { getNextData } from './data';
 import { AnimationManager } from './animations';
 import { processDataWithImageCheck } from './dataProcessor';
-import modalTemplate from './modalTemplate';
-import modalStyle from './modalStyle';
+import { modalTemplate } from './modalTemplate';
+import { modalStyle } from './modalStyle';
 
 async function render() {
   const data = getNextData();
