@@ -48,7 +48,7 @@ const data = {
   },
   // 第3名数据
   top3RankItem: null,
-  // 排行榜列表（只需要2条数据，从第4名开始）
+  // 排行榜列表（从第4名开始）
   listRankItem: [
     {
       openId: 'user_004',
