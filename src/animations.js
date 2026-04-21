@@ -35,10 +35,12 @@ class GoldBounce {
   stop() {
     if (this.upTween) {
       this.upTween.stop();
+      TWEEN.remove(this.upTween);
       this.upTween = null;
     }
     if (this.downTween) {
       this.downTween.stop();
+      TWEEN.remove(this.downTween);
       this.downTween = null;
     }
   }
@@ -99,6 +101,7 @@ class AnimationManager {
     this.blinkTweens.forEach(tween => {
       if (tween) {
         tween.stop();
+        TWEEN.remove(tween);
       }
     });
     this.blinkTweens = [];
