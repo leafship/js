@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "dot": "^1.1.3",
     "minigame-canvas-engine": "^1.0.29"
   },
   "devDependencies": {
