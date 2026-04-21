@@ -35,7 +35,7 @@ const case1 = {
 
 const case2 = {
   isAuthDeny: false,
-  rankType: 'SingleEliRank',
+  rankType: 'BlockRank',
   myRankItem: createRankItem('self_001', 3, '我自己', VALID_AVATAR),
   top1RankItem: createRankItem('user_001', 1, '第一名', INVALID_AVATAR),
   top2RankItem: createRankItem('user_002', 2, '第二名', EMPTY_AVATAR),
@@ -59,7 +59,7 @@ const case3 = {
 
 const case4 = {
   isAuthDeny: false,
-  rankType: 'SingleEliRank',
+  rankType: 'ComboRank',
   myRankItem: createRankItem('self_001', 8, '我自己', INVALID_AVATAR),
   top1RankItem: createRankItem('user_001', 1, '玩家A', 'https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9474353441508872424%22%7D&n_type=-1&p_from=-1'),
   top2RankItem: createRankItem('user_002', 2, '玩家B', INVALID_AVATAR),
