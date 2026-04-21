@@ -21,6 +21,8 @@ let context = canvas.getContext("2d");
 var tempFn = doT.template(template);
 var resultText = tempFn(data);
 
+stopAnimations();
+
 Layout.clear();
 Layout.init(resultText, style);
 Layout.layout(context);
