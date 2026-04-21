@@ -120,6 +120,9 @@ class AnimationManager {
 
     GoldBounce.getInstance().stop();
 
+    //兜底处理
+    TWEEN.removeAll();
+
     this.isRunning = false;
   }
 }
