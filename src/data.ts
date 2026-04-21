@@ -3,20 +3,24 @@ const INVALID_AVATAR = 'https://error/';
 const EMPTY_AVATAR = '';
 const NULL_AVATAR = null;
 
+function randomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function createRankItem(openId: string, rank: number, nickname: string, avatarUrl: string | null) {
   return {
     openId,
     rank,
     nickname,
     avatarUrl,
-    stage: 3,
-    tbcnt: 65,
-    totalCombo: 130,
-    maxCombo: 42,
-    elim5: 5,
-    elim4: 5,
-    elim3: 8,
-    elim2: 10
+    stage: randomInt(1, 9999),
+    tbcnt: randomInt(10, 999999),
+    totalCombo: randomInt(50, 99999),
+    maxCombo: randomInt(10, 99),
+    elim5: randomInt(0, 20),
+    elim4: randomInt(0, 50),
+    elim3: randomInt(0, 100),
+    elim2: randomInt(0, 200)
   };
 }
 
