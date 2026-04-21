@@ -1,26 +1,6 @@
 import Layout from 'minigame-canvas-engine';
-
-// XML 模板
-const template = `
-<view id="container">
-  <text id="text" value="hello canvas"></text>
-</view>
-`;
-
-// 样式
-const style = {
-  container: {
-    width: 400,
-    height: 200,
-    backgroundColor: '#4ECDC4',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    color: '#ffffff',
-    fontSize: 24,
-  },
-};
+import { template } from './template';
+import { style } from './style';
 
 // 渲染
 const canvas = document.getElementById('canvas');
