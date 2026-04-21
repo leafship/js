@@ -1,15 +1,14 @@
 const VALID_AVATAR = 'https://wx.qlogo.cn/mmopen/vi_32/yctGCWkz1jKPjEeR8ic5RXXxn0sExT4JrPjIpPvscuS1FBZssIEp2Ry5URlT4eY7mM0akiaRHgdntryUDOicxbVh7Fo2gLVQCNzVchuwSZY9LI/132';
 const INVALID_AVATAR = 'https://error/';
 const EMPTY_AVATAR = '';
+const NULL_AVATAR = null;
 
-const case1 = {
-  isAuthDeny: true,
-  rankType: 'MultiEliRank',
-  myRankItem: {
-    openId: 'self_001',
-    rank: 5,
-    nickname: '我自己',
-    avatarUrl: VALID_AVATAR,
+function createRankItem(openId: string, rank: number, nickname: string, avatarUrl: string | null) {
+  return {
+    openId,
+    rank,
+    nickname,
+    avatarUrl,
     stage: 3,
     tbcnt: 65,
     totalCombo: 130,
@@ -18,149 +17,40 @@ const case1 = {
     elim4: 5,
     elim3: 8,
     elim2: 10
-  },
-  top1RankItem: {
-    openId: 'user_001',
-    rank: 1,
-    nickname: '巅峰战神',
-    avatarUrl: VALID_AVATAR,
-    stage: 5,
-    tbcnt: 128,
-    totalCombo: 256,
-    maxCombo: 89,
-    elim5: 12,
-    elim4: 8,
-    elim3: 15,
-    elim2: 20
-  },
-  top2RankItem: {
-    openId: 'user_002',
-    rank: 2,
-    nickname: '火神降临',
-    avatarUrl: VALID_AVATAR,
-    stage: 5,
-    tbcnt: 115,
-    totalCombo: 230,
-    maxCombo: 78,
-    elim5: 10,
-    elim4: 9,
-    elim3: 14,
-    elim2: 18
-  },
-  top3RankItem: null,
+  };
+}
+
+const case1 = {
+  isAuthDeny: true,
+  rankType: 'MultiEliRank',
+  myRankItem: createRankItem('self_001', 5, '我自己', VALID_AVATAR),
+  top1RankItem: createRankItem('user_001', 1, '巅峰战神', VALID_AVATAR),
+  top2RankItem: createRankItem('user_002', 2, '火神降临', VALID_AVATAR),
+  top3RankItem: createRankItem('user_003', 3, '第三名', VALID_AVATAR),
   listRankItem: [
-    {
-      openId: 'user_004',
-      rank: 4,
-      nickname: '雷霆一击',
-      avatarUrl: VALID_AVATAR,
-      stage: 4,
-      tbcnt: 87,
-      totalCombo: 174,
-      maxCombo: 58,
-      elim5: 7,
-      elim4: 6,
-      elim3: 10,
-      elim2: 14
-    }
+    createRankItem('user_004', 4, '雷霆一击', VALID_AVATAR),
+    createRankItem('user_005', 5, '第五名', VALID_AVATAR)
   ]
 };
 
 const case2 = {
   isAuthDeny: false,
   rankType: 'SingleEliRank',
-  myRankItem: null,
-  top1RankItem: {
-    openId: 'user_001',
-    rank: 1,
-    nickname: '第一名',
-    avatarUrl: INVALID_AVATAR,
-    stage: 5,
-    tbcnt: 100,
-    totalCombo: 200,
-    maxCombo: 80,
-    elim5: 10,
-    elim4: 10,
-    elim3: 10,
-    elim2: 10
-  },
-  top2RankItem: {
-    openId: 'user_002',
-    rank: 2,
-    nickname: '第二名',
-    avatarUrl: EMPTY_AVATAR,
-    stage: 4,
-    tbcnt: 90,
-    totalCombo: 180,
-    maxCombo: 70,
-    elim5: 8,
-    elim4: 8,
-    elim3: 12,
-    elim2: 12
-  },
-  top3RankItem: {
-    openId: 'user_003',
-    rank: 3,
-    nickname: '第三名',
-    avatarUrl: VALID_AVATAR,
-    stage: 3,
-    tbcnt: 80,
-    totalCombo: 160,
-    maxCombo: 60,
-    elim5: 6,
-    elim4: 6,
-    elim3: 14,
-    elim2: 14
-  },
+  myRankItem: createRankItem('self_001', 3, '我自己', VALID_AVATAR),
+  top1RankItem: createRankItem('user_001', 1, '第一名', INVALID_AVATAR),
+  top2RankItem: createRankItem('user_002', 2, '第二名', EMPTY_AVATAR),
+  top3RankItem: createRankItem('user_003', 3, '第三名', NULL_AVATAR),
   listRankItem: [
-    {
-      openId: 'user_004',
-      rank: 4,
-      nickname: '第四名',
-      avatarUrl: INVALID_AVATAR,
-      stage: 3,
-      tbcnt: 70,
-      totalCombo: 140,
-      maxCombo: 50,
-      elim5: 5,
-      elim4: 5,
-      elim3: 15,
-      elim2: 15
-    },
-    {
-      openId: 'user_005',
-      rank: 5,
-      nickname: '第五名',
-      avatarUrl: VALID_AVATAR,
-      stage: 2,
-      tbcnt: 60,
-      totalCombo: 120,
-      maxCombo: 40,
-      elim5: 4,
-      elim4: 4,
-      elim3: 16,
-      elim2: 16
-    }
+    createRankItem('user_004', 4, '第四名', INVALID_AVATAR),
+    createRankItem('user_005', 5, '第五名', VALID_AVATAR),
+    createRankItem('user_006', 6, '第六名', EMPTY_AVATAR)
   ]
 };
 
 const case3 = {
   isAuthDeny: true,
   rankType: 'MultiEliRank',
-  myRankItem: {
-    openId: 'self_001',
-    rank: 1,
-    nickname: '我自己',
-    avatarUrl: VALID_AVATAR,
-    stage: 5,
-    tbcnt: 150,
-    totalCombo: 300,
-    maxCombo: 100,
-    elim5: 15,
-    elim4: 15,
-    elim3: 15,
-    elim2: 15
-  },
+  myRankItem: createRankItem('self_001', 1, '我自己', VALID_AVATAR),
   top1RankItem: null,
   top2RankItem: null,
   top3RankItem: null,
@@ -170,106 +60,15 @@ const case3 = {
 const case4 = {
   isAuthDeny: false,
   rankType: 'SingleEliRank',
-  myRankItem: null,
-  top1RankItem: {
-    openId: 'user_001',
-    rank: 1,
-    nickname: '玩家A',
-    avatarUrl: 'https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9474353441508872424%22%7D&n_type=-1&p_from=-1',
-    stage: 5,
-    tbcnt: 200,
-    totalCombo: 400,
-    maxCombo: 150,
-    elim5: 20,
-    elim4: 20,
-    elim3: 20,
-    elim2: 20
-  },
-  top2RankItem: {
-    openId: 'user_002',
-    rank: 2,
-    nickname: '玩家B',
-    avatarUrl: INVALID_AVATAR,
-    stage: 4,
-    tbcnt: 180,
-    totalCombo: 360,
-    maxCombo: 120,
-    elim5: 18,
-    elim4: 18,
-    elim3: 18,
-    elim2: 18
-  },
-  top3RankItem: {
-    openId: 'user_003',
-    rank: 3,
-    nickname: '玩家C',
-    avatarUrl: EMPTY_AVATAR,
-    stage: 3,
-    tbcnt: 160,
-    totalCombo: 320,
-    maxCombo: 100,
-    elim5: 16,
-    elim4: 16,
-    elim3: 16,
-    elim2: 16
-  },
+  myRankItem: createRankItem('self_001', 8, '我自己', INVALID_AVATAR),
+  top1RankItem: createRankItem('user_001', 1, '玩家A', 'https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9474353441508872424%22%7D&n_type=-1&p_from=-1'),
+  top2RankItem: createRankItem('user_002', 2, '玩家B', INVALID_AVATAR),
+  top3RankItem: createRankItem('user_003', 3, '玩家C', EMPTY_AVATAR),
   listRankItem: [
-    {
-      openId: 'user_004',
-      rank: 4,
-      nickname: '玩家D',
-      avatarUrl: VALID_AVATAR,
-      stage: 5,
-      tbcnt: 140,
-      totalCombo: 280,
-      maxCombo: 90,
-      elim5: 14,
-      elim4: 14,
-      elim3: 14,
-      elim2: 14
-    },
-    {
-      openId: 'user_005',
-      rank: 5,
-      nickname: '玩家E',
-      avatarUrl: INVALID_AVATAR,
-      stage: 4,
-      tbcnt: 120,
-      totalCombo: 240,
-      maxCombo: 80,
-      elim5: 12,
-      elim4: 12,
-      elim3: 12,
-      elim2: 12
-    },
-    {
-      openId: 'user_006',
-      rank: 6,
-      nickname: '玩家F',
-      avatarUrl: EMPTY_AVATAR,
-      stage: 3,
-      tbcnt: 100,
-      totalCombo: 200,
-      maxCombo: 70,
-      elim5: 10,
-      elim4: 10,
-      elim3: 10,
-      elim2: 10
-    },
-    {
-      openId: 'user_007',
-      rank: 7,
-      nickname: '玩家G',
-      avatarUrl: VALID_AVATAR,
-      stage: 2,
-      tbcnt: 80,
-      totalCombo: 160,
-      maxCombo: 60,
-      elim5: 8,
-      elim4: 8,
-      elim3: 8,
-      elim2: 8
-    }
+    createRankItem('user_004', 4, '玩家D', VALID_AVATAR),
+    createRankItem('user_005', 5, '玩家E', INVALID_AVATAR),
+    createRankItem('user_006', 6, '玩家F', NULL_AVATAR),
+    createRankItem('user_007', 7, '玩家G', VALID_AVATAR)
   ]
 };
 

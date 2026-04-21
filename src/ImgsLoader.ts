@@ -50,7 +50,7 @@ interface LayoutLike {
  * }
  * ```
  */
-const LOAD_TIMEOUT = 3000;
+const LOAD_TIMEOUT = 5000;
 
 function loadWithTimeout(loadPromise: Promise<unknown>, timeout: number): Promise<unknown> {
   return new Promise((resolve, reject) => {

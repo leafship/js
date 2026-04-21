@@ -66,23 +66,21 @@ const template = `
    </view>
    
    <view class="listHeader">
-        <text class="listHeaderRank" value="排名"></text>
-        <text class="listHeaderPlayer" value="玩家"></text>
+       <text class="listHeaderRank" value="排名"></text>
+       <text class="listHeaderPlayer" value="玩家"></text>
     {{? it.rankType === "BlockRank"}}
-        <text class="listHeaderBlock" value="方块数"></text>
-      </view>
+       <text class="listHeaderBlock" value="方块数"></text>
     {{?}}
     {{? it.rankType === "MultiEliRank"}}
-        <text class="listHeaderMe" value="5消"></text>
-        <text class="listHeaderMe" value="4消"></text>
-        <text class="listHeaderMe" value="3消"></text>
-        <text class="listHeaderMe" value="2消"></text>
-      </view>
+       <text class="listHeaderMe" value="5消"></text>
+       <text class="listHeaderMe" value="4消"></text>
+       <text class="listHeaderMe" value="3消"></text>
+       <text class="listHeaderMe" value="2消"></text>
     {{?}}
     {{? it.rankType === "ComboRank"}}
-        <text class="listHeaderCombo" value="连消数"></text>
-      </view>
+       <text class="listHeaderCombo" value="连消数"></text>
     {{?}}
+   </view>
   
   {{~ it.listRankItem : item : index}}
   {{? index % 2 === 0 }}
