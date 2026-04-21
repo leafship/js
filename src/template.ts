@@ -10,7 +10,7 @@ const template = `
      <view class="topXContainer">
      
      {{? !it.top2RankItem }}
-        <image id="top2NobodyAvatar" class="top2NobodyAvatar" src="https://i.ibb.co/TxKwH1RN/avatar2-nobody.png">
+        <image id="top2NobodyAvatar" class="top2NobodyAvatar" src="pic/avatar2_nobody.png">
         </image>
         <text id="top2NobodyName" class="top2NobodyName" value="此时此刻"></text>
      {{?}}
@@ -24,18 +24,18 @@ const template = `
     <text id="top2Name" class="top2Name" value="{{= it.top2RankItem.nickname }}"></text>
      {{?}}
 
-        <image class="top2Podium" src="https://i.ibb.co/Lm7Qw7m/Podium2.png">
+        <image class="top2Podium" src="pic/Podium2.png">
         </image> 
      </view>
      
      <view class="topXContainer">
      {{? !it.top1RankItem }}
-        <image id="top1NobodyAvatar" class="top1NobodyAvatar" src="https://i.ibb.co/N6rRgRd2/avatar1-nobody.png">
+        <image id="top1NobodyAvatar" class="top1NobodyAvatar" src="pic/avatar1_nobody.png">
         </image>
         <text id="top1NobodyName" class="top1NobodyName" value="舍我其谁"></text>
       {{?}}
       {{? it.top1RankItem }}
-        <image id="top1Gold" class="top1Gold" src="https://i.ibb.co/xbFG5kY/gold-medal-icon.png">
+        <image id="top1Gold" class="top1Gold" src="pic/gold_medal_icon.png">
         </image>
         <view class="top1AvatarBorder" >
           <view class="top1AvatarBg">
@@ -44,13 +44,13 @@ const template = `
         </view>
         <text id="top1Name" class="top1Name" value="{{= it.top1RankItem.nickname }}"></text>
       {{?}}
-        <image class="top1Podium" src="https://i.ibb.co/ynyBPhTV/Podium1.png">
+        <image class="top1Podium" src="pic/Podium1.png">
         </image>
      </view>
      
      <view class="topXContainer">
      {{? !it.top3RankItem }}
-        <image id="top3NobodyAvatar" class="top3NobodyAvatar" src="https://i.ibb.co/HT46vwKp/avatar3-nobody.png">
+        <image id="top3NobodyAvatar" class="top3NobodyAvatar" src="pic/avatar3_nobody.png">
         </image>
         <text id="top3NobodyName" class="top3NobodyName" value="虚位以待"></text>
       {{?}}
@@ -63,7 +63,7 @@ const template = `
         <text id="top3Name" class="top3Name" value="{{= it.top3RankItem.nickname }}"></text>
       
       {{?}}
-        <image class="top3Podium" src="https://i.ibb.co/gFDLP525/Podium3.png">
+        <image class="top3Podium" src="pic/Podium3.png">
         </image>
     </view>
     
@@ -135,7 +135,7 @@ const template = `
           {{?}}
         </view>
         <view class="myRankAvatar">
-          <image class="myRankAvatarIconBorder" src="https://i.ibb.co/v6y7rmvf/round-bg-icon.png">
+          <image class="myRankAvatarIconBorder" src="pic/round_bg_icon.png">
           
           <view class="myRankAvatarBg">
            {{? it.myRankItem.avatarUrl}}
