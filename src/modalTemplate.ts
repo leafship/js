@@ -5,7 +5,9 @@ export let modalTemplate = `
       <view class="avatarSection">
       
         <view class="modalAvatarBorder">
-          <image class="modalAvatarImg" src="{{= it.avatarUrl }}"></image>
+          <view class="modalAvatarBg">
+            <image class="modalAvatarImg" src="{{= it.avatarUrl }}"></image>
+          </view>
         </view>
       
         <view class="modalAvatarRightArea">

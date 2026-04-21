@@ -39,6 +39,15 @@ export const modalStyle = {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modalAvatarBg: {
+    width: 130,
+    height: 130,
+    borderRadius: 65,
+    backgroundColor: '#05071D',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   modalAvatarImg: {
     width: 130,
     height: 130,
