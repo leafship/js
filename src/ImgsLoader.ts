@@ -71,7 +71,7 @@ async function preloadImages(layout: LayoutLike, imageUrls: string[]): Promise<I
   const cachedFailed: string[] = [];
   
   imageUrls.forEach(url => {
-    if (failedImageCache.includes(url)) {
+    if (failedImageCache.indexOf(url) !== -1) {
       cachedFailed.push(url);
     } else {
       urlsToLoad.push(url);
