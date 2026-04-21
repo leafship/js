@@ -6,6 +6,7 @@ import { AnimationManager } from './animations';
 import { processDataWithImageCheck } from './dataProcessor';
 import { modalTemplate } from './modalTemplate';
 import { modalStyle } from './modalStyle';
+import { LeagueManager } from './LeagueManager';
 
 async function render() {
   const data = getNextData();
@@ -21,18 +22,60 @@ async function render() {
   Layout.init(resultText, style);
   Layout.layout(context);
 
-  bindClickEvent();
+  bindClickEvent(processedData);
 
   AnimationManager.getInstance().start();
 }
 
-function bindClickEvent() {  
+function bindClickEvent(processedData) {  
   const list = Layout.getElementsByClassName('clickItem'); 
   const container = Layout.getElementById('container'); 
  
-  list.forEach(item => { 
+  list.forEach((item, index) => { 
     item.on('click', (e) => { 
-      Layout.insertElement(modalTemplate, modalStyle, container); 
+      const listIndex = parseInt(item.getAttribute('data-index'), 10);
+      let itemData = null;
+
+      if (!isNaN(listIndex) && processedData) {
+        if (listIndex >= 0 && processedData.listRankItem) {
+          itemData = processedData.listRankItem[listIndex];
+        } else if (listIndex === -1 && processedData.top1RankItem) {
+          itemData = processedData.top1RankItem;
+        } else if (listIndex === -2 && processedData.top2RankItem) {
+          itemData = processedData.top2RankItem;
+        } else if (listIndex === -3 && processedData.top3RankItem) {
+          itemData = processedData.top3RankItem;
+        } else if (listIndex === -4 && processedData.myRankItem) {
+          itemData = processedData.myRankItem;
+        }
+      }
+
+      if (!itemData) return;
+
+      const totalBlockCount = itemData.tbcnt || 0;
+      const leagueName = LeagueManager.getLeagueName(totalBlockCount);
+      const levelValue = `Lv. ${Math.floor(totalBlockCount / 100)}`;
+      const stageValue = `第 ${itemData.stage || 1} 关`;
+
+      const modalData = {
+        avatarUrl: itemData.avatarUrl || 'pic/avatar_default_icon.png',
+        nickname: itemData.nickname || '微信用户',
+        leagueName: leagueName,
+        levelValue: levelValue,
+        stageValue: stageValue,
+        tbcnt: itemData.tbcnt || 0,
+        totalCombo: itemData.totalCombo || 0,
+        maxCombo: itemData.maxCombo || 0,
+        elim5: itemData.elim5 || 0,
+        elim4: itemData.elim4 || 0,
+        elim3: itemData.elim3 || 0,
+        elim2: itemData.elim2 || 0,
+      };
+
+      const tempFn = doT.template(modalTemplate);
+      const renderedHtml = tempFn(modalData);
+       
+      Layout.insertElement(renderedHtml, modalStyle, container); 
        
       const modal = Layout.getElementById('modal'); 
       const modalButtonSection = Layout.getElementById('modalButtonSection'); 
