@@ -8,6 +8,13 @@ class GoldBounce {
     this.goldNode = null;
   }
 
+  static getInstance() {
+    if (!GoldBounce.instance) {
+      GoldBounce.instance = new GoldBounce();
+    }
+    return GoldBounce.instance;
+  }
+
   start() {
     this.goldNode = Layout.getElementById('top1Gold');
     if (!this.goldNode) return;
@@ -44,15 +51,21 @@ class GoldBounce {
       this.downTween = null;
     }
   }
-}
 
-const goldBounce = new GoldBounce();
+}
 
 class AnimationManager {
   constructor() {
     this.tickerCallback = null;
     this.blinkTweens = [];
     this.isRunning = false;
+  }
+
+  static getInstance() {
+    if (!AnimationManager.instance) {
+      AnimationManager.instance = new AnimationManager();
+    }
+    return AnimationManager.instance;
   }
 
   start() {
@@ -86,7 +99,7 @@ class AnimationManager {
       }
     });
 
-    goldBounce.start();
+    GoldBounce.getInstance().start();
 
   }
 
@@ -106,18 +119,10 @@ class AnimationManager {
     });
     this.blinkTweens = [];
 
-    goldBounce.stop();
+    GoldBounce.getInstance().stop();
 
     this.isRunning = false;
   }
 }
 
-const animationManager = new AnimationManager();
-
-export function startAnimations() {
-  animationManager.start();
-}
-
-export function stopAnimations() {
-  animationManager.stop();
-}
+export { AnimationManager };

@@ -2,7 +2,7 @@ import Layout from 'minigame-canvas-engine';
 import { template } from './template';
 import { style } from './style';
 import { data } from './data';
-import { startAnimations, stopAnimations } from './animations';
+import { AnimationManager } from './animations';
 
 Layout.updateViewPort({ x: 0, y: 0, width: 720, height: 1030 });
 
@@ -19,10 +19,10 @@ let context = canvas.getContext("2d");
 var tempFn = doT.template(template);
 var resultText = tempFn(data);
 
-stopAnimations();
+AnimationManager.getInstance().stop();
 
 Layout.clear();
 Layout.init(resultText, style);
 Layout.layout(context);
 
-startAnimations();
+AnimationManager.getInstance().start();
