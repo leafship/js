@@ -15,8 +15,6 @@ canvas.style.height = 1030 + "px";
 
 let context = canvas.getContext("2d");
 
-
-
 // 编译模板
 var tempFn = doT.template(template);
 var resultText = tempFn(data);
