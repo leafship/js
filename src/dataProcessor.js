@@ -32,7 +32,7 @@ function replaceFailedAvatars(dataObj, failedUrls) {
   ];
   
   items.forEach(item => {
-    if (item && item.avatarUrl && failedSet.has(item.avatarUrl)) {
+    if (item && (!item.avatarUrl || failedSet.has(item.avatarUrl))) {
       item.avatarUrl = DEFAULT_AVATAR;
     }
   });
