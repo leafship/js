@@ -33,7 +33,7 @@ function bindClickEvent(processedData) {
  
   list.forEach((item, index) => { 
     item.on('click', (e) => { 
-      const listIndex = parseInt(item.getAttribute('data-index'), 10);
+      const listIndex = parseInt(item.dataset.index, 10);
       let itemData = null;
 
       if (!isNaN(listIndex) && processedData) {
