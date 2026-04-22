@@ -3,7 +3,7 @@ const template = `
 <view id="container" class="container">
 
   <!-- 列表 -->
-  <scrollview class="scrollview" scrollY="true">
+  <scrollview id="scrollview" class="scrollview" scrollY="true">
   
     <view class="top3Section">
     
