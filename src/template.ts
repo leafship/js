@@ -113,13 +113,18 @@ const template = `
   {{~}}
   
   //如果列表没有人，显示暂无更多...
-  {{? it.listRankItem.length === 0 && !it.isAuthDeny }}
+  {{? it.listRankItem.length === 0 && !it.isAuthDeny && !it.isUnknownErr }}
     <text class="noMoreListItem" value="暂无更多..."></text>
   {{?}}
   //未授权
   {{? it.isAuthDeny }}
     <text class="authDenyText1" value="未授权！无法获取数据！"></text>
     <text class="authDenyText2" value="去开启授权：右上角[···] - 底部[设置] - 开启[微信朋友信息]"></text>
+    <text class="noMoreListItem" value="授权后 下拉刷新"></text>
+  {{?}}
+  //未知错误
+  {{? it.isUnknownErr }}
+    <text class="authDenyText1" value="网络错误！请稍后重试！"></text>
   {{?}}
   
   </scrollview>
