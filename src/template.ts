@@ -125,6 +125,7 @@ const template = `
   //未知错误
   {{? it.isUnknownErr }}
     <text class="authDenyText1" value="网络错误！请稍后再试！"></text>
+    <text class="noMoreListItem" value="下拉刷新"></text>
   {{?}}
   
   </scrollview>
