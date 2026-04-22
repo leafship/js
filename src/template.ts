@@ -119,7 +119,7 @@ const template = `
   //未授权
   {{? it.isAuthDeny }}
     <text class="authDenyText1" value="未授权！无法查询数据！"></text>
-    <text class="authDenyText2" value="去开启授权：右上角[⋯‌] - 底部[设置] - 开启[微信朋友信息]"></text>
+    <text class="authDenyText2" value="去开启授权：右上角[···] - 底部[设置] - 开启[微信朋友信息]"></text>
   {{?}}
   
   </scrollview>
