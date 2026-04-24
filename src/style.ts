@@ -25,6 +25,13 @@ const style = {
     flexDirection: 'row',
     justifyContent: 'center'
   },
+  refreshHint: {
+    position: 'absolute',
+    left: 20,
+    top: 20,
+    fontSize: 20,
+    color: '#E3E3FF99'
+  },
   topXContainer: {
     width: 200,
     flexDirection: 'column',
