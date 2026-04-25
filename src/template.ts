@@ -6,7 +6,11 @@ const template = `
   <scrollview id="scrollview" class="scrollview" scrollY="true">
   
     <view class="top3Section">
-    <text class="refreshHint" value="每3分钟 刷新榜单"></text>
+    <view class="refreshHintContainer">
+      <image class="refreshHintIcon" src="pic/alarm-clock.png"></image>
+      <text class="refreshHint" value="每3分钟 刷新榜单"></text>
+    </view>
+    
     
      <view class="topXContainer">
      

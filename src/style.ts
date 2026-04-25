@@ -25,10 +25,20 @@ const style = {
     flexDirection: 'row',
     justifyContent: 'center'
   },
-  refreshHint: {
+  refreshHintContainer: {
     position: 'absolute',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     left: 20,
     top: 20,
+  },
+  refreshHintIcon: {
+    width: 25,
+    height: 25,
+    marginRight: 5
+  },
+  refreshHint: {
     fontSize: 20,
     color: '#E3E3FF99'
   },
