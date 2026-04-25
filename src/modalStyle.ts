@@ -14,7 +14,7 @@ export const modalStyle = {
     justifyContent: 'center',
     width: 600,
     height: 1000,
-    borderRadius: 25,
+    borderRadius: 60,
     borderWidth: 1,
     borderColor: '#FFFFFF63',
     backgroundColor: '#05071D',
