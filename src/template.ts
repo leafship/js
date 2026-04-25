@@ -109,11 +109,11 @@ const template = `
         <text class="me" value="{{=item.elim2}}"></text>
      {{?}}
      {{? it.rankType === "BlockRank"}}
-        <text class="namew250" value="{{=item.nickname}}"></text>
+        <text class="namew" value="{{=item.nickname}}"></text>
         <text class="itemBlockAndCombo" value="{{=item.tbcnt}}"></text>
      {{?}}
      {{? it.rankType === "ComboRank"}}
-        <text class="namew250" value="{{=item.nickname}}"></text>
+        <text class="namew" value="{{=item.nickname}}"></text>
         <text class="itemBlockAndCombo" value="{{=item.totalCombo}}"></text>
      {{?}}
     </view>

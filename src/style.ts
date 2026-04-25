@@ -326,7 +326,7 @@ const style = {
     verticalAlign: 'middle',
     color: '#6AD6FF'
   },
-  namew250: {
+  namew: {
     width: 250,
     marginLeft: 10,
     fontSize: 23,
@@ -342,7 +342,7 @@ const style = {
     textAlign: 'right'
   },
   itemBlockAndCombo: {
-    width: 330,
+    width: 260,
     fontSize: 26,
     color: '#E3E3FFAF',
     textAlign: 'right'
