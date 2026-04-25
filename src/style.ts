@@ -298,7 +298,7 @@ const style = {
     width: 70,
     fontSize: 30,
     color: '#E3E3FF',
-    textAlign: 'center',
+    textAlign: 'right',
     verticalAlign: 'middle',
     fontWeight: 'bold'
   },
