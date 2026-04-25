@@ -326,6 +326,15 @@ const style = {
     verticalAlign: 'middle',
     color: '#6AD6FF'
   },
+  namew250: {
+    width: 250,
+    marginLeft: 10,
+    fontSize: 23,
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    verticalAlign: 'middle',
+    color: '#6AD6FF'
+  },
   me: {
     width: 85,
     fontSize: 26,

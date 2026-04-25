@@ -101,17 +101,19 @@ const template = `
     
         <text class="rank" value="{{=item.rank}}"></text>
         <image class="avatar" src="{{=item.avatarUrl}}"></image>
-        <text class="name" value="{{=item.nickname}}"></text>
      {{? it.rankType === "MultiEliRank"}}
+        <text class="name" value="{{=item.nickname}}"></text>
         <text class="me" value="{{=item.elim5}}"></text>
         <text class="me" value="{{=item.elim4}}"></text>
         <text class="me" value="{{=item.elim3}}"></text>
         <text class="me" value="{{=item.elim2}}"></text>
      {{?}}
      {{? it.rankType === "BlockRank"}}
+        <text class="namew250" value="{{=item.nickname}}"></text>
         <text class="itemBlockAndCombo" value="{{=item.tbcnt}}"></text>
      {{?}}
      {{? it.rankType === "ComboRank"}}
+        <text class="namew250" value="{{=item.nickname}}"></text>
         <text class="itemBlockAndCombo" value="{{=item.totalCombo}}"></text>
      {{?}}
     </view>
