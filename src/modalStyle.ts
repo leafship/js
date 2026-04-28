@@ -138,7 +138,7 @@ export const modalStyle = {
     marginLeft: 30,
     marginTop: 15,
     fontSize: 30,
-    color: '#00F2FF',
+    color: '#8FFE7F',
   },
   modalStageRightFlagImg: {
     marginLeft: 130,
@@ -217,7 +217,7 @@ export const modalStyle = {
   modalRecord1BlockValueNumber: {
     marginLeft: 20,
     fontSize: 35,
-    color: '#00F2FF',
+    color: '#FFD709',
   },
   modalRecord1BlockValueText: {
     marginLeft: 5,
@@ -267,7 +267,7 @@ export const modalStyle = {
   },
   modalRecord1ComboTotalValue: {
     fontSize: 35,
-    color: '#00F2FF'
+    color: '#FF7351'
   },
   modalRecord1ComboTotalText: {
     marginLeft: 2,
@@ -282,7 +282,7 @@ export const modalStyle = {
   },
   modalRecord1ComboMaxValue: {
     fontSize: 35,
-    color: '#00F2FF'
+    color: '#FF7351'
   },
   modalRecord1ComboMaxText: {
     marginLeft: 2,
