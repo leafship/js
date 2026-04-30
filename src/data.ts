@@ -32,7 +32,7 @@ const case1 = {
   top2RankItem: createRankItem('user_002', 2, '火神降临', VALID_AVATAR),
   top3RankItem: createRankItem('user_003', 3, '第三名', VALID_AVATAR),
   listRankItem: [
-    createRankItem('user_004', 4, '雷霆一击', VALID_AVATAR),
+    createRankItem('user_004', 4, '雷霆一键', VALID_AVATAR),
     createRankItem('user_005', 5, '第五名', VALID_AVATAR)
   ]
 };
@@ -76,7 +76,22 @@ const case4 = {
   ]
 };
 
-const cases = [case1, case2, case3, case4];
+const case5 = {
+  isAuthDeny: false,
+  rankType: 'StageRank',
+  myRankItem: createRankItem('self_001', 3, '我自己', VALID_AVATAR),
+  top1RankItem: createRankItem('user_001', 1, '关卡达人', VALID_AVATAR),
+  top2RankItem: createRankItem('user_002', 2, '闯关王', VALID_AVATAR),
+  top3RankItem: createRankItem('user_003', 3, '第三名', VALID_AVATAR),
+  listRankItem: [
+    createRankItem('user_004', 4, '第四名', VALID_AVATAR),
+    createRankItem('user_005', 5, '第五名', VALID_AVATAR),
+    createRankItem('user_006', 6, '第六名', VALID_AVATAR),
+    createRankItem('user_007', 7, '第七名', VALID_AVATAR)
+  ]
+};
+
+const cases = [case1, case2, case3, case4, case5];
 let currentIndex = 0;
 
 export function getNextData() {
