@@ -80,6 +80,9 @@ const template = `
     {{? it.rankType === "BlockRank"}}
        <text class="listHeaderBlock" value="方块数"></text>
     {{?}}
+    {{? it.rankType === "StageRank"}}
+       <text class="listHeaderStage" value="关卡数"></text>
+    {{?}}
     {{? it.rankType === "MultiEliRank"}}
        <text class="listHeaderMe" value="5消"></text>
        <text class="listHeaderMe" value="4消"></text>
@@ -111,6 +114,10 @@ const template = `
      {{? it.rankType === "BlockRank"}}
         <text class="namew" value="{{=item.nickname}}"></text>
         <text class="itemBlockAndCombo" value="{{=item.tbcnt}}"></text>
+     {{?}}
+     {{? it.rankType === "StageRank"}}
+        <text class="namew" value="{{=item.nickname}}"></text>
+        <text class="itemBlockAndCombo" value="{{=item.stage}}"></text>
      {{?}}
      {{? it.rankType === "ComboRank"}}
         <text class="namew" value="{{=item.nickname}}"></text>
@@ -183,7 +190,12 @@ const template = `
           <text class="myRankValue" value="{{= it.myRankItem.tbcnt }}"></text>
         </view>
       {{?}}
-      
+      {{? it.rankType === "StageRank" }}
+        <view class="myRankStage">
+          <text class="myRankTitleText" value="关卡数"></text>
+          <text class="myRankValue" value="{{= it.myRankItem.stage }}"></text>
+        </view>
+      {{?}}
       {{? it.rankType === "ComboRank" }}
         <view class="myRankCombo">
           <text class="myRankTitleText" value="连消数"></text>

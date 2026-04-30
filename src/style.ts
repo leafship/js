@@ -280,6 +280,12 @@ const style = {
     textAlign: 'right',
     color: '#E3E3FF99',
   },
+  listHeaderStage: {
+    width: 330,
+    fontSize: 23,
+    textAlign: 'right',
+    color: '#E3E3FF99',
+  },
   listHeaderCombo: {
     width: 330,
     fontSize: 23,
@@ -470,6 +476,12 @@ const style = {
     height: 110
   },
   myRankBlock: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    width: 320,
+    height: 110
+  },
+  myRankStage: {
     flexDirection: 'column',
     alignItems: 'flex-end',
     width: 320,
