@@ -73,7 +73,7 @@ export let modalTemplate = `
         <view class="modalRecordME">
             <view class="modalRecordMETitle">
               <image class="modalRecordMETitleImg" src="pic/rank_me_icon.png"></image>
-              <text class="modalRecordMETitleText" value="多消数"></text>
+              <text class="modalRecordMETitleText" value="N消数"></text>
             </view>
             <view class="modalRecordMETop">
                 <view class="modalRecordM5">
